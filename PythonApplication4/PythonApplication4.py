@@ -1,12 +1,10 @@
-﻿def fibonacci_sequence(n):
-    sequence = [0, 1]
-    
-    while len(sequence) < n:
-        next_value = sequence[-1] + sequence[-2]
-        sequence.append(next_value)
-    
-    return sequence[:n]
+﻿
+input_name = input("Nhập họ và tên: ")
 
-n = int(input())
-fib_sequence = fibonacci_sequence(n)
-print(f"Đầu ra dãy Fibonacci đầu tiên {n} số là: {fib_sequence}")
+def chuan_hoa_ho_ten(name):
+    words = name.strip().split()
+    words = [word.capitalize() for word in words]
+    return ' '.join(words)
+
+normalized_name = chuan_hoa_ho_ten(input_name)
+print("Chuỗi họ tên chuẩn hóa:", normalized_name)

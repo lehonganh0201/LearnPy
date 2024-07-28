@@ -1,16 +1,18 @@
-﻿a = int(input("Nhập số a: "))
-b = int(input("Nhập số b: "))
+﻿k = int(input("Nhập số lượng phần tử k: "))
+a = []
+for _ in range(k):
+    a.append(int(input("Nhập phần tử: ")))
 
-print("a cộng b:", a + b)
-print("a trừ b:", a - b)
-print("a nhân b:", a * b)
-print("a chia lấy nguyên b:", a // b)
-print("a mũ b:", a ** b)
-print("a chia dư b:", a % b)
-print("a so với b:", "lớn hơn" if a > b else "nhỏ hơn" if a < b else "bằng")
-print("a AND b:", a & b)
-print("a OR b:", a | b)
-print("a XOR b:", a ^ b)
-print("NOT a == b:", not (a == b))
-print("a >> 1 đơn vị:", a >> 1)
-print("a << 1 đơn vị:", a << 1)
+n = int(input("Nhập số dòng n: "))
+m = int(input("Nhập số cột m: "))
+
+if n * m <= k:
+    matrix = []
+    for i in range(n):
+        row = a[i*m:(i+1)*m]
+        matrix.append(row)
+    print("Ma trận X({} × {}):".format(n, m))
+    for row in matrix:
+        print(row)
+else:
+    print("NO")

@@ -1,33 +1,32 @@
-﻿import cmath
+﻿s1 = input("Nhập chuỗi s1: ")
+s2 = input("Nhập chuỗi s2: ")
 
-def calculate_S1(n):
-    total = 0
-    for i in range(1, 2*n + 2):
-        if i % 2 == 1: 
-            total += i
-        else: 
-            total -= i
-    return total
+reversed_s1 = s1[::-1]
+print("Đảo ngược của chuỗi s1:", reversed_s1)
 
-def calculate_S2(n):
-    total = 0
-    for i in range(1, n + 1):
-        total += 1 / i
-    return total
+a = int(input("Nhập số a: "))
+b = int(input("Nhập số b: "))
+while not (1 <= a < b <= len(s2)):
+    print("Giá trị a và b không hợp lệ. Vui lòng nhập lại.")
+    a = int(input("Nhập số a: "))
+    b = int(input("Nhập số b: "))
 
-def solve_quadratic(a, b, c):
-    discriminant = b**2 - 4*a*c
-    root1 = (-b + cmath.sqrt(discriminant)) / (2*a)
-    root2 = (-b - cmath.sqrt(discriminant)) / (2*a)
-    return root1, root2
+s2_reversed_substring = s2[:a-1] + s2[a-1:b][::-1] + s2[b:]
+print("Chuỗi s2 sau khi đảo ngược từ vị trí {} đến {}: {}".format(a, b, s2_reversed_substring))
 
-n=int(input())
-print(f"S({n}) = {calculate_S1(n)}")
-print(f"S({n}) = {calculate_S2(n)}")
+s3 = s1[::2]
+print("Chuỗi s3 sau khi xóa các kí tự vị trí chẵn:", s3)
 
-a=int(input())
-b=int(input())
-c=int(input())
-root1, root2 = solve_quadratic(a, b, c)
-print(f"Nghiệm của phương trình là x1 = {root1}, x2 = {root2}")
+s4 = ''.join([i + j for i, j in zip(s1, s2)])
+s4 += s1[len(s2):] if len(s1) > len(s2) else s2[len(s1):]
+print("Chuỗi s4 đan xen các kí tự của s1 và s2:", s4)
 
+if len(s1) > 1 and len(s2) > 1:
+    swapped_s1 = s2[:2] + s1[2:]
+    swapped_s2 = s1[:2] + s2[2:]
+else:
+    swapped_s1 = s2 + s1[1:]
+    swapped_s2 = s1 + s2[1:]
+
+print("Chuỗi s1 sau khi đổi chỗ 2 ký tự đầu tiên với s2:", swapped_s1)
+print("Chuỗi s2 sau khi đổi chỗ 2 ký tự đầu tiên với s1:", swapped_s2)

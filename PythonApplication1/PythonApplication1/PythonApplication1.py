@@ -1,43 +1,37 @@
-﻿def bai1():
-    n = int(input("Nhập một số nguyên dương: "))
+﻿N = int(input("Nhập số lượng phần tử N: "))
+lst = []
+for _ in range(N):
+    lst.append(int(input("Nhập phần tử: ")))
 
-    total = 0
-    while n > 0:
-        total += n % 10
-        n //= 10
+X = int(input("Nhập số X: "))
+print(f"Số lần {X} xuất hiện trong list: {lst.count(X)}")
 
-    print("Tổng các chữ số là:", total)
+if len(lst) >= 8:
+    lst[2:8] = [8, 5, 4, 0, 1, 3]
+else:
+    lst[2:] = [8, 5, 4, 0, 1, 3][:len(lst) - 2]
 
-def bai2():
-    n = int(input("Nhập một số nguyên dương: "))
+max_value = max(lst)
+min_value = min(lst)
+print(f"Số lớn nhất trong list: {max_value}")
+print(f"Số nhỏ nhất trong list: {min_value}")
 
-    sum_divisors = 0
-    for i in range(1, n + 1):
-        if n % i == 0:
-            sum_divisors += i
+Y = int(input("Nhập số Y: "))
+lst.insert(0, Y)
 
-    print("Tổng các ước số là:", sum_divisors)
-    
-def bai3():
-    a = int(input("Nhập cạnh a: "))
-    b = int(input("Nhập cạnh b: "))
-    c = int(input("Nhập cạnh c: "))
+if lst == sorted(lst):
+    print("TĂNG")
+elif lst == sorted(lst, reverse=True):
+    print("GIẢM")
+else:
+    print("NO")
 
-    if a + b > c and a + c > b and b + c > a:
-    
-        if a == b == c:
-            triangle_type = "Tam giác đều"
-        elif a**2 + b**2 == c**2 or a**2 + c**2 == b**2 or b**2 + c**2 == a**2:
-            triangle_type = "Tam giác vuông"
-        elif a == b or b == c or a == c:
-            triangle_type = "Tam giác cân"
-        else:
-            triangle_type = "Tam giác nhọn hoặc tù"
-    else:
-        triangle_type = "Ba cạnh không tạo thành tam giác"
+new_lst = [sum(lst[:i+1]) for i in range(N)]
+print("List mới với các phần tử là tổng i phần tử đầu tiên của list cũ:", new_lst)
 
-    print("Loại tam giác là:", triangle_type)
-    
-bai1()
-bai2()
-bai3()
+lst2 = [94, 39, 49, 6, -55, -37, 1, -23, -31, 1000]
+sorted_lst2 = sorted(lst2)
+sorted_lst2_abs = sorted(lst2, key=abs)
+
+print("List mới sắp xếp theo thứ tự tăng dần của giá trị:", sorted_lst2)
+print("List mới sắp xếp theo thứ tự tăng dần của giá trị tuyệt đối:", sorted_lst2_abs)
